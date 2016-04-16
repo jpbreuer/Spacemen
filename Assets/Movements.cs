@@ -14,16 +14,16 @@ void Update()
         forceVector = Quaternion.Euler(this.transform.eulerAngles) * forceVector;
         rigidbody.AddForce(forceVector);
 
-        rigidbody.AddRelativeTorque(new Vector3(Input.GetAxis("Pitch") * ThrustSpeed / 20, Input.GetAxis("Yaw") * ThrustSpeed / 20,0));
+        rigidbody.AddRelativeTorque(new Vector3(Input.GetAxis("Pitch") * ThrustSpeed / 20, 0, Input.GetAxis("Roll") * ThrustSpeed / 20));
 
-        if(Input.GetButton("RollRight"))
+        if(Input.GetButton("YawRight"))
         {
-        rigidbody.AddRelativeTorque(new Vector3(0,0,ThrustSpeed/20));
+        rigidbody.AddRelativeTorque(new Vector3(0,ThrustSpeed/20,0));
         }
 
-        if (Input.GetButton("RollLeft"))
+        if (Input.GetButton("YawLeft"))
         {
-            rigidbody.AddRelativeTorque(new Vector3(0, 0, -ThrustSpeed / 10));
+            rigidbody.AddRelativeTorque(new Vector3(0, -ThrustSpeed / 10, 0));
         }
 
         rigidbody.angularDrag = 0.4f;

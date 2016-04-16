@@ -178,7 +178,7 @@ public class ObjectBreaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpace = Input.GetKey(KeyCode.Space);
+        currentSpace = Input.GetButton("Fire") || Input.GetKey(KeyCode.Space);
         if (currentSpace && currentSpace != oldSpace && doBreak)
         {
             //Vector3 normal = new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f).normalized;
