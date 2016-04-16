@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/testLevel.unity
+- path: Assets/Asteroid_Test.unity
   isLoaded: 1
   isActive: 1

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Attract{
+public class Attract : MonoBehaviour{
 	public static Vector3 attract(GameObject obj, float G){
 		GameObject[] attractors = GameObject.FindGameObjectsWithTag("Attractor");
 		Vector3 gravityForce = Vector3.zero;
