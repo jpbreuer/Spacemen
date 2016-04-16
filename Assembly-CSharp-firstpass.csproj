@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{889597BB-D3C0-37A6-EDF9-27EAC10238E4}</ProjectGuid>
+    <ProjectGuid>{79A5DA1E-59B6-C8F7-DD21-F69C60E9A429}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -278,7 +278,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/ENTE11HC/Dropbox/COPENHACKS - SPACEBOYS/Copenhacks Space Jam/Assets/ThirdParty/NewtonsoftJsonNet20/Newtonsoft.Json.dll</HintPath>
+ <HintPath>D:/Spacemen/Assets/ThirdParty/NewtonsoftJsonNet20/Newtonsoft.Json.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A82264EE-BD7C-4A0A-2736-51C954EEC704}</ProjectGuid>
+    <ProjectGuid>{486DB26E-6E62-CCAA-E824-B69C6A21F6F5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -185,7 +185,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/ENTE11HC/Dropbox/COPENHACKS - SPACEBOYS/Copenhacks Space Jam/Assets/ThirdParty/NewtonsoftJsonNet20/Newtonsoft.Json.dll</HintPath>
+ <HintPath>D:/Spacemen/Assets/ThirdParty/NewtonsoftJsonNet20/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -199,9 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{889597BB-D3C0-37A6-EDF9-27EAC10238E4}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{79A5DA1E-59B6-C8F7-DD21-F69C60E9A429}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{221D4947-D989-0FBB-4C8F-42AF5860EF4E}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{C043BF0E-0FD0-62C6-ED75-81909E5BB0F0}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

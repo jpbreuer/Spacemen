@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{221D4947-D989-0FBB-4C8F-42AF5860EF4E}</ProjectGuid>
+    <ProjectGuid>{C043BF0E-0FD0-62C6-ED75-81909E5BB0F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -91,7 +91,7 @@
      <Compile Include="Assets\PlaceText.cs" />
      <Compile Include="Assets\PlanetDeform.cs" />
      <Compile Include="Assets\PlanetPosition.cs" />
-     <Compile Include="Assets\PlanetPositions.cs" />
+     <Compile Include="Assets\SetupScripts\CreateAsteroidBelt.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -198,12 +198,12 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/ENTE11HC/Dropbox/COPENHACKS - SPACEBOYS/Copenhacks Space Jam/Assets/ThirdParty/NewtonsoftJsonNet20/Newtonsoft.Json.dll</HintPath>
+ <HintPath>D:/Spacemen/Assets/ThirdParty/NewtonsoftJsonNet20/Newtonsoft.Json.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{889597BB-D3C0-37A6-EDF9-27EAC10238E4}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{79A5DA1E-59B6-C8F7-DD21-F69C60E9A429}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
