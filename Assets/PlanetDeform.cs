@@ -12,8 +12,10 @@ public class PlanetDeform : MonoBehaviour {
 	
 	void Start () {
 		GetComponent<Rigidbody>().mass = Scale*Scale*Scale*10;
+		GetComponent<SphereCollider>().radius = Scale;
 		Debug.Log("Size: " + Scale + " , Mass: " + GetComponent<Rigidbody>().mass);
 		mesh = GetComponent<MeshFilter>().mesh;
+		//mesh = Resources.Load<Mesh>("Assets/Asteroids/Planet.obj");
 		originalVertices = mesh.vertices;
 		newVertices = originalVertices;
 		for(int i = 0; i < originalVertices.Length; i++){
