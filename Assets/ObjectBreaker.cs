@@ -184,16 +184,16 @@ public class ObjectBreaker : MonoBehaviour
             //Vector3 normal = new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f).normalized;
             //Vector3 point = normal * Random.value;
             //Fracture(point, normal);
+            Vector3 pos = this.transform.position;
+            Vector3 vel = this.GetComponent<Rigidbody>().velocity;
+            this.transform.position = Vector3.zero;
             Mesh thisMesh = GetComponent<MeshFilter>().mesh;
             
             List<Vector3> fracturePoints = new List<Vector3>();
             List<GameObject> cubes = new List<GameObject>();
 
-            fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
-            fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
-            fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
-            fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
-            fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
+            for (int i = 0; i < 4; i++)
+                fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
 
             for (int i = 0; i < fracturePoints.Count; i++)
             {
@@ -212,7 +212,8 @@ public class ObjectBreaker : MonoBehaviour
                     }
                 }
 
-                cubes[i].transform.position = cubes[i].transform.position + (fracturePoints[i] - this.transform.position).normalized * 0.005f;
+                cubes[i].transform.position = cubes[i].transform.position  * 1.01f + pos;
+                //cubes[i].GetComponent<Rigidbody>().velocity = fracturePoints[i].normalized * 1f + vel;
                 cubes[i].GetComponent<MeshCollider>().sharedMesh = m;
             }
             Destroy(this.gameObject);
