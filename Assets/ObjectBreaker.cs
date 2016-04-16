@@ -192,7 +192,7 @@ public class ObjectBreaker : MonoBehaviour
             List<Vector3> fracturePoints = new List<Vector3>();
             List<GameObject> cubes = new List<GameObject>();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
                 fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
 
             for (int i = 0; i < fracturePoints.Count; i++)

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spacemen.CSharp.Plugins", "Spacemen.CSharp.Plugins.csproj", "{AFAFEA06-843A-4A1E-9C9B-D65F3EE720F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spacemen.CSharp", "Spacemen.CSharp.csproj", "{92F3EF0D-6452-C859-046B-7449F552C748}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spacemen.CSharp.Editor", "Spacemen.CSharp.Editor.csproj", "{4024059C-D7D9-5387-5EC4-BB0F27CD5B0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFAFEA06-843A-4A1E-9C9B-D65F3EE720F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFAFEA06-843A-4A1E-9C9B-D65F3EE720F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFAFEA06-843A-4A1E-9C9B-D65F3EE720F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFAFEA06-843A-4A1E-9C9B-D65F3EE720F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F3EF0D-6452-C859-046B-7449F552C748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F3EF0D-6452-C859-046B-7449F552C748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F3EF0D-6452-C859-046B-7449F552C748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F3EF0D-6452-C859-046B-7449F552C748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4024059C-D7D9-5387-5EC4-BB0F27CD5B0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4024059C-D7D9-5387-5EC4-BB0F27CD5B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4024059C-D7D9-5387-5EC4-BB0F27CD5B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4024059C-D7D9-5387-5EC4-BB0F27CD5B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
