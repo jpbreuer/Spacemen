@@ -4,12 +4,19 @@ using System.Collections;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField]
-    GameObject target;
-    
-        void Update ()
+    public GameObject target;
+    public Vector3 offset;
+
+    void Start()
     {
+        offset = target.transform.position - new Vector3(0,10,25);
+    }
 
-        this.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+10, target.transform.position.z + 25);
+    void Update ()
+    {
+        Quaternion rotation = Quaternion.Euler(target.transform.eulerAngles.x, target.transform.eulerAngles.y, target.transform.eulerAngles.z);
 
+        transform.position = target.transform.position - (rotation * offset);
+        transform.LookAt(target.transform);
     }
 }
