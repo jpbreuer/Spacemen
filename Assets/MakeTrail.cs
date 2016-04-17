@@ -7,16 +7,20 @@ public class MakeTrail : MonoBehaviour {
     public Camera camera;
 	
 	public ArrayList tailSegments;
-	GameObject Tail;
+    public ArrayList tailIntensities;
+    GameObject Tail;
 	public GameObject Ship;
 	public Material mat;
 	// Use this for initialization
 	void Start () {
 		tailSegments = new ArrayList();
-		Vector3 p = Ship.transform.position;
+        tailIntensities = new ArrayList();
+        Vector3 p = Ship.transform.position;
 		for(int i = 0; i < TailLength; i++){
 			tailSegments.Add(p);
-		}
+            tailIntensities.Add(0.0f);
+
+        }
 		Tail = new GameObject("tail");
 		Tail.AddComponent<MeshFilter>();
 		Tail.AddComponent<MeshRenderer>();
@@ -29,15 +33,18 @@ public class MakeTrail : MonoBehaviour {
 
         tailSegments.RemoveAt(0);
         tailSegments.Add(Ship.transform.position);
-	
-		Mesh mesh = Tail.GetComponent<MeshFilter>().mesh;
+
+        tailIntensities.RemoveAt(0);
+        tailIntensities.Add(Mathf.Abs(Input.GetAxis("Thrust")));
+
+        Mesh mesh = Tail.GetComponent<MeshFilter>().mesh;
 		Vector3[] vertices = new Vector3[3*TailLength];
 		Vector2[] uv = new Vector2[3*TailLength];
 		int[] triangles = new int[3*6*(TailLength-1)];
 		
 		//Calculate the vertices
 		for(int i = 0; i < TailLength; i++){
-			float r = TailWidth - (TailLength-i-1)*TailWidth/TailLength;
+            float r = (TailWidth - (TailLength - i - 1) * TailWidth / TailLength) * (float)tailIntensities[i] * 0.5f;
 			Vector3 dir = ((Vector3) tailSegments[Mathf.Min(TailLength-1, i+1)] - (Vector3) tailSegments[Mathf.Max(0, i-1)]);
 			Vector3 a1 = Vector3.Cross(dir, Vector3.up);
 			a1.Normalize();
@@ -45,7 +52,7 @@ public class MakeTrail : MonoBehaviour {
 			Vector3 a2 = Quaternion.AngleAxis(120, dir)*a1 + (Vector3) tailSegments[i];
 			Vector3 a3 = Quaternion.AngleAxis(240, dir)*a1 + (Vector3) tailSegments[i];
 			a1 += (Vector3) tailSegments[i];
-			vertices[3*i] = a1;
+			vertices[3*i]   = a1;
 			vertices[3*i+1] = a2;
 			vertices[3*i+2] = a3;
 			uv[3*i] = new Vector3(1, 1);

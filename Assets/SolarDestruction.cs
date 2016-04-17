@@ -6,5 +6,7 @@ public class SolarDestruction : MonoBehaviour {
     {
         if (collision.gameObject.GetComponent<ObjectBreaker>() != null)
             Destroy(collision.gameObject);
+        if (collision.gameObject.tag == "Ship")
+            collision.gameObject.GetComponent<DeathHandler>().Die();
     }
 }

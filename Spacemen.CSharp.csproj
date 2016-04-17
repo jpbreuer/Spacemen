@@ -58,8 +58,17 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="XInputDotNetPure">
+      <HintPath>Assets\Plugins\x86_64\XInputDotNetPure.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\ThirdParty\NewtonsoftJsonNet20\Newtonsoft.Json.dll</HintPath>
@@ -76,12 +85,18 @@
     <Compile Include="Assets\Asteroids\HeightMap.cs" />
     <Compile Include="Assets\Attract.cs" />
     <Compile Include="Assets\CameraMovement.cs" />
+    <Compile Include="Assets\DeathHandler.cs" />
+    <Compile Include="Assets\EngineSound.cs" />
+    <Compile Include="Assets\Explosion.cs" />
+    <Compile Include="Assets\Fader.cs" />
     <Compile Include="Assets\LaserGun.cs" />
     <Compile Include="Assets\MakeTrail.cs" />
+    <Compile Include="Assets\Menu\GameOver.cs" />
     <Compile Include="Assets\Movements.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\NewBehaviourScript1.cs" />
     <Compile Include="Assets\ObjectBreaker.cs" />
+    <Compile Include="Assets\ObjectGenerator.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\AchievementType.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\AndroidPlatform.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\CAPI.cs" />
@@ -121,6 +136,9 @@
     <Compile Include="Assets\PlanetDeform.cs" />
     <Compile Include="Assets\PlanetPosition.cs" />
     <Compile Include="Assets\ProjectileBehavior.cs" />
+    <Compile Include="Assets\SolarDestruction.cs" />
+    <Compile Include="Assets\ThrusterLight.cs" />
+    <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
@@ -217,6 +235,7 @@
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
     <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\ThirdParty\NewtonsoftJsonNet20\Newtonsoft.Json.xml" />
+    <None Include="Assets\XInputDotNet\MITLicense.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

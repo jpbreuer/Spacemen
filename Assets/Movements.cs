@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Movements : MonoBehaviour
 {
-    public float ThrustSpeed = 30;
+    public float ThrustSpeed = 10;
     public Vector3 forceVector = new Vector3(0,0,0); 
     
 void Update()
@@ -27,7 +27,7 @@ void Update()
         }
 
         rigidbody.angularDrag = 0.4f;
-        rigidbody.drag = 0.4f;
+        rigidbody.drag = 0.1f;
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
