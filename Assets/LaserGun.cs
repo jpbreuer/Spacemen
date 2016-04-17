@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
 
 public class LaserGun : MonoBehaviour { 
     [SerializeField]
@@ -27,7 +28,11 @@ public class LaserGun : MonoBehaviour {
             cntr++;
             cntr = cntr & 0x03;
 
+            GamePad.SetVibration(0, 1.0f, 1.0f);
+
             lastShot = Time.time;
         }
+        else
+            GamePad.SetVibration(0, 0.0f, 0.0f);
     }
 }

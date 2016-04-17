@@ -21,7 +21,7 @@ public class EngineSound : MonoBehaviour {
 			if(v.magnitude < MinSpeed)
             {
 				au.Stop();
-			}
+            }
             else// if(v.magnitude < MaxSpeed)
             {
 				au.pitch = v.magnitude/MaxSpeed;
