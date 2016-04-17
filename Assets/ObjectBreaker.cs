@@ -178,46 +178,49 @@ public class ObjectBreaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpace = Input.GetButton("Fire") || Input.GetKey(KeyCode.Space);
+       /* currentSpace = Input.GetButton("Fire") || Input.GetKey(KeyCode.Space);
         if (currentSpace && currentSpace != oldSpace && doBreak)
         {
-            //Vector3 normal = new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f).normalized;
-            //Vector3 point = normal * Random.value;
-            //Fracture(point, normal);
-            Vector3 pos = this.transform.position;
-            Vector3 vel = this.GetComponent<Rigidbody>().velocity;
-            this.transform.position = Vector3.zero;
-            Mesh thisMesh = GetComponent<MeshFilter>().mesh;
-            
-            List<Vector3> fracturePoints = new List<Vector3>();
-            List<GameObject> cubes = new List<GameObject>();
-
-            for (int i = 0; i < 5; i++)
-                fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
-
-            for (int i = 0; i < fracturePoints.Count; i++)
-            {
-                cubes.Add(Instantiate(this.gameObject));
-                cubes[i].GetComponent<ObjectBreaker>().doBreak = false;
-                Mesh m = cubes[i].GetComponent<MeshFilter>().mesh;
-
-                for (int j = 0; j < fracturePoints.Count; j++)
-                {
-                    if (i != j)
-                    {
-                        Vector3 point = (fracturePoints[i] + fracturePoints[j]) / 2;
-                        Vector3 normal = (fracturePoints[j] - fracturePoints[i]).normalized;        
-
-                        Fracture(m, point, normal);
-                    }
-                }
-
-                cubes[i].transform.position = cubes[i].transform.position  * 1.01f + pos;
-                //cubes[i].GetComponent<Rigidbody>().velocity = fracturePoints[i].normalized * 1f + vel;
-                cubes[i].GetComponent<MeshCollider>().sharedMesh = m;
-            }
-            Destroy(this.gameObject);
+            //Break();
         }
-        oldSpace = currentSpace;
+        oldSpace = currentSpace;*/
+    }
+
+    public void Break(Vector3 exPos, float exForce, float exRadius)
+    {
+        Vector3 pos = this.transform.position;
+        Vector3 vel = this.GetComponent<Rigidbody>().velocity;
+        this.transform.position = Vector3.zero;
+        Mesh thisMesh = GetComponent<MeshFilter>().mesh;
+
+        List<Vector3> fracturePoints = new List<Vector3>();
+        List<GameObject> cubes = new List<GameObject>();
+
+        for (int i = 0; i < 5; i++)
+            fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
+
+        for (int i = 0; i < fracturePoints.Count; i++)
+        {
+            cubes.Add(Instantiate(this.gameObject));
+            cubes[i].GetComponent<ObjectBreaker>().doBreak = false;
+            Mesh m = cubes[i].GetComponent<MeshFilter>().mesh;
+
+            for (int j = 0; j < fracturePoints.Count; j++)
+            {
+                if (i != j)
+                {
+                    Vector3 point = (fracturePoints[i] + fracturePoints[j]) / 2;
+                    Vector3 normal = (fracturePoints[j] - fracturePoints[i]).normalized;
+
+                    Fracture(m, point, normal);
+                }
+            }
+
+            cubes[i].transform.position = cubes[i].transform.position * 1.01f + pos;   
+            //cubes[i].GetComponent<Rigidbody>().velocity = fracturePoints[i].normalized * 1f + vel;
+            cubes[i].GetComponent<MeshCollider>().sharedMesh = m;
+            cubes[i].GetComponent<Rigidbody>().AddExplosionForce(exForce, exPos, exRadius);
+        }
+        Destroy(this.gameObject);
     }
 }

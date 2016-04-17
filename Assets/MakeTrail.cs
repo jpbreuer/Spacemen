@@ -1,0 +1,70 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class MakeTrail : MonoBehaviour {
+	public int TailLength = 100;
+	public float TailWidth = 0.05f;
+	
+	public ArrayList tailSegments;
+	GameObject Tail;
+	public GameObject Ship;
+	public Material mat;
+	// Use this for initialization
+	void Start () {
+		tailSegments = new ArrayList();
+		Vector3 p = Ship.transform.position;
+		for(int i = 0; i < TailLength; i++){
+			tailSegments.Add(p);
+		}
+		Tail = new GameObject("tail");
+		Tail.AddComponent<MeshFilter>();
+		Tail.AddComponent<MeshRenderer>();
+		Tail.GetComponent<MeshRenderer>().material = mat;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		tailSegments.RemoveAt(0);
+		tailSegments.Add(Ship.transform.position);
+	
+		Mesh mesh = Tail.GetComponent<MeshFilter>().mesh;
+		Vector3[] vertices = new Vector3[3*TailLength];
+		Vector2[] uv = new Vector2[3*TailLength];
+		int[] triangles = new int[3*6*(TailLength-1)];
+		//int[] triangles = new int[3*(TailLength)];
+		
+		//Calculate the vertices
+		for(int i = 0; i < TailLength; i++){
+			float r = TailWidth - (TailLength-i-1)*TailWidth/TailLength;
+			Vector3 dir = ((Vector3) tailSegments[Mathf.Min(TailLength-1, i+1)] - (Vector3) tailSegments[Mathf.Max(0, i-1)]);
+			Vector3 a1 = Vector3.Cross(dir, Vector3.up);
+			a1.Normalize();
+			a1*=r;
+			Vector3 a2 = Quaternion.AngleAxis(120, dir)*a1 + (Vector3) tailSegments[i];
+			Vector3 a3 = Quaternion.AngleAxis(240, dir)*a1 + (Vector3) tailSegments[i];
+			a1 += (Vector3) tailSegments[i];
+			vertices[3*i] = a1;
+			vertices[3*i+1] = a2;
+			vertices[3*i+2] = a3;
+			uv[3*i] = new Vector3(1, 1);
+			uv[3*i+1] = new Vector3(1, 0);
+			uv[3*i+2] = new Vector3(0, 0);
+		}
+		//Calculate the faces
+		for(int i = 0; i < TailLength-1; i++){
+			triangles[18*i] = 3*i;			triangles[18*i+1] = 3*i+4; 	triangles[18*i+2] = 3*i+1;
+			triangles[18*i+3] = 3*i;		triangles[18*i+4] = 3*i+3; 	triangles[18*i+5] = 3*i+4;
+			triangles[18*i+6] = 3*i+1;		triangles[18*i+7] = 3*i+5; 	triangles[18*i+8] = 3*i+2;
+			triangles[18*i+9] = 3*i+1;		triangles[18*i+10] = 3*i+4; 	triangles[18*i+11] = 3*i+5;
+			triangles[18*i+12] = 3*i+2;	triangles[18*i+13] = 3*i+3; 	triangles[18*i+14] = 3*i;
+			triangles[18*i+15] = 3*i+2;	triangles[18*i+16] = 3*i+5; 	triangles[18*i+17] = 3*i+3;
+		}
+		for(int i = 0; i < vertices.Length; i++){
+			//triangles[i] = i;
+		}
+		mesh.vertices = vertices;
+		//mesh.uv = uv;
+		mesh.triangles = triangles;
+		mesh.RecalculateNormals();
+	}
+}
