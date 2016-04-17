@@ -76,6 +76,8 @@
     <Compile Include="Assets\Asteroids\HeightMap.cs" />
     <Compile Include="Assets\Attract.cs" />
     <Compile Include="Assets\CameraMovement.cs" />
+    <Compile Include="Assets\LaserGun.cs" />
+    <Compile Include="Assets\MakeTrail.cs" />
     <Compile Include="Assets\Movements.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\NewBehaviourScript1.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Assets\PlaceText.cs" />
     <Compile Include="Assets\PlanetDeform.cs" />
     <Compile Include="Assets\PlanetPosition.cs" />
+    <Compile Include="Assets\ProjectileBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />

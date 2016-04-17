@@ -4,24 +4,25 @@ using System.Collections;
 public class ProjectileBehavior : MonoBehaviour {
     [SerializeField]
     float ProjectileSpeed = 100.0f;
+    float startTime = 0;
+    float lifeTime = 5f;
+
     // Use this for initialization
     void Start () {
         gameObject.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.up * ProjectileSpeed);
+        startTime = Time.time;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        foreach (ContactPoint contact in collision.contacts)
-        {
-            contact.otherCollider.gameObject.GetComponent<ObjectBreaker>().Break(contact.point, 500.0f, 5.0f);
-
-        }
-
-        Destroy(this.gameObject);
+        if (collision.gameObject.GetComponent<ObjectBreaker>() != null)
+            collision.gameObject.GetComponent<ObjectBreaker>().Break(transform.position, 500.0f, 5.0f);
+        Destroy(gameObject);
     }
-
+    
     // Update is called once per frame
     void Update () {
-	
+        if (Time.time - startTime > lifeTime)
+            Destroy(gameObject);
 	}
 }
