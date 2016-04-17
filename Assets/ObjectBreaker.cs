@@ -8,6 +8,7 @@ public class ObjectBreaker : MonoBehaviour
     float EPSILON = 0.000f;
     bool doBreak = true;
     bool currentSpace = false; bool oldSpace = false;
+    int deathCounter = 0;
 
     struct Polygon
     {
@@ -173,6 +174,7 @@ public class ObjectBreaker : MonoBehaviour
         m.vertices = newVertices.ToArray();
         m.normals = newNormals.ToArray();
         m.triangles = newTriangles.ToArray();
+        m.RecalculateNormals();
     }
 
     // Update is called once per frame
@@ -188,6 +190,13 @@ public class ObjectBreaker : MonoBehaviour
 
     public void Break(Vector3 exPos, float exForce, float exRadius)
     {
+        deathCounter++;
+        if (deathCounter > 3)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Vector3 pos = this.transform.position;
         Vector3 vel = this.GetComponent<Rigidbody>().velocity;
         this.transform.position = Vector3.zero;
@@ -217,9 +226,9 @@ public class ObjectBreaker : MonoBehaviour
             }
 
             cubes[i].transform.position = cubes[i].transform.position * 1.01f + pos;   
-            //cubes[i].GetComponent<Rigidbody>().velocity = fracturePoints[i].normalized * 1f + vel;
             cubes[i].GetComponent<MeshCollider>().sharedMesh = m;
             cubes[i].GetComponent<Rigidbody>().AddExplosionForce(exForce, exPos, exRadius);
+            cubes[i].GetComponent<ObjectBreaker>().deathCounter = deathCounter;
         }
         Destroy(this.gameObject);
     }
