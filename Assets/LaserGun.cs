@@ -22,6 +22,7 @@ public class LaserGun : MonoBehaviour {
             Transform fireTransform = transform.FindChild("Gun" + (cntr+1).ToString());
             GameObject laser = (GameObject)Instantiate(LaserObject, fireTransform.position, fireTransform.rotation);
             laser.GetComponent<Rigidbody>().velocity = laser.GetComponent<Rigidbody>().velocity + GetComponent<Rigidbody>().velocity;
+            gameObject.GetComponent<AudioSource>().Play();
 
             cntr++;
             cntr = cntr & 0x03;

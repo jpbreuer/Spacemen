@@ -6,9 +6,10 @@ public class PlanetPosition : MonoBehaviour {
 	public float orbitRadius;
 	public float omega;
 	public float inclination;
-	
-	// Use this for initialization
-	void Start () {
+    public float offset;
+
+    // Use this for initialization
+    void Start () {
         
     }
 	
@@ -22,7 +23,7 @@ public class PlanetPosition : MonoBehaviour {
 		semiMinor = Quaternion.Euler(0, 0, inclination)*semiMinor;
 		
 		float angularVelocity = 2*Mathf.PI*Mathf.Sqrt(mu/Mathf.Pow(orbitRadius, 3));
-		float theta = Time.time*angularVelocity;
+		float theta = Time.time*angularVelocity + offset;
 		transform.position = semiMajor*Mathf.Cos(theta) + semiMinor*Mathf.Sin(theta);
 	}
 }

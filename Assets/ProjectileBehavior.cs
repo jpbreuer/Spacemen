@@ -4,6 +4,8 @@ using System.Collections;
 public class ProjectileBehavior : MonoBehaviour {
     [SerializeField]
     float ProjectileSpeed = 100.0f;
+    [SerializeField]
+    GameObject obj;
     float startTime = 0;
     float lifeTime = 5f;
 
@@ -17,6 +19,8 @@ public class ProjectileBehavior : MonoBehaviour {
     {
         if (collision.gameObject.GetComponent<ObjectBreaker>() != null)
             collision.gameObject.GetComponent<ObjectBreaker>().Break(transform.position, 500.0f, 5.0f);
+         
+        Instantiate(obj, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     

@@ -191,44 +191,42 @@ public class ObjectBreaker : MonoBehaviour
     public void Break(Vector3 exPos, float exForce, float exRadius)
     {
         deathCounter++;
-        if (deathCounter > 3)
+
+        if (deathCounter < 2)
         {
-            Destroy(gameObject);
-            return;
-        }
+            Vector3 pos = this.transform.position;
+            Vector3 vel = this.GetComponent<Rigidbody>().velocity;
+            this.transform.position = Vector3.zero;
+            Mesh thisMesh = GetComponent<MeshFilter>().mesh;
 
-        Vector3 pos = this.transform.position;
-        Vector3 vel = this.GetComponent<Rigidbody>().velocity;
-        this.transform.position = Vector3.zero;
-        Mesh thisMesh = GetComponent<MeshFilter>().mesh;
+            List<Vector3> fracturePoints = new List<Vector3>();
+            List<GameObject> cubes = new List<GameObject>();
 
-        List<Vector3> fracturePoints = new List<Vector3>();
-        List<GameObject> cubes = new List<GameObject>();
+            for (int i = 0; i < 7; i++)
+                fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
 
-        for (int i = 0; i < 5; i++)
-            fracturePoints.Add(new Vector3(Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f, Random.value * 2.0f - 1.0f) * 0.1f);
-
-        for (int i = 0; i < fracturePoints.Count; i++)
-        {
-            cubes.Add(Instantiate(this.gameObject));
-            cubes[i].GetComponent<ObjectBreaker>().doBreak = false;
-            Mesh m = cubes[i].GetComponent<MeshFilter>().mesh;
-
-            for (int j = 0; j < fracturePoints.Count; j++)
+            for (int i = 0; i < fracturePoints.Count; i++)
             {
-                if (i != j)
+                cubes.Add(Instantiate(this.gameObject));
+                cubes[i].GetComponent<ObjectBreaker>().doBreak = false;
+                Mesh m = cubes[i].GetComponent<MeshFilter>().mesh;
+
+                for (int j = 0; j < fracturePoints.Count; j++)
                 {
-                    Vector3 point = (fracturePoints[i] + fracturePoints[j]) / 2;
-                    Vector3 normal = (fracturePoints[j] - fracturePoints[i]).normalized;
+                    if (i != j)
+                    {
+                        Vector3 point = (fracturePoints[i] + fracturePoints[j]) / 2;
+                        Vector3 normal = (fracturePoints[j] - fracturePoints[i]).normalized;
 
-                    Fracture(m, point, normal);
+                        Fracture(m, point, normal);
+                    }
                 }
-            }
 
-            cubes[i].transform.position = cubes[i].transform.position * 1.01f + pos;   
-            cubes[i].GetComponent<MeshCollider>().sharedMesh = m;
-            cubes[i].GetComponent<Rigidbody>().AddExplosionForce(exForce, exPos, exRadius);
-            cubes[i].GetComponent<ObjectBreaker>().deathCounter = deathCounter;
+                cubes[i].transform.position = cubes[i].transform.position * 1.01f + pos;
+                cubes[i].GetComponent<MeshCollider>().sharedMesh = m;
+                cubes[i].GetComponent<Rigidbody>().AddExplosionForce(exForce, exPos, exRadius);
+                cubes[i].GetComponent<ObjectBreaker>().deathCounter = deathCounter;
+            }
         }
         Destroy(this.gameObject);
     }

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class AffectedByGravity : MonoBehaviour {
-    [SerializeField] private float G = 6.67e-2f;
+    [SerializeField] private float G = 6.67e1f;
 
     // Update is called once per frame
     void Update ()
