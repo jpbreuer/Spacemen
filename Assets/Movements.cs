@@ -28,5 +28,11 @@ void Update()
 
         rigidbody.angularDrag = 0.4f;
         rigidbody.drag = 0.4f;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            //rigidbody.angularVelocity = new Vector3(0, 0, 0);
+            //rigidbody.velocity = new Vector3(0, 0, 0);
+        }
     }
 }
